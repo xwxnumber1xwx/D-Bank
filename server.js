@@ -20,17 +20,14 @@ app.get("/", function (req, res) {
 
 app.post("/api/user_info", function (req, res) {
     const query = { cust_catag: req.body.query };
-    console.log('query', query);
     /* Connect to Mongo DB */
     const client = new MongoClient(URL, { useNewUrlParser: true });
     client.connect(err => {
         if (err) throw err;
         const collection = client.db(DB).collection(COLLECTION);
         // perform actions on the collection object
-        console.log(collection);
         collection.find(query).toArray(function (err, result) {
             if (err) throw err;
-            console.log(result);
             client.close();
             res.send(JSON.stringify(result));
         });
