@@ -1,4 +1,6 @@
 async function getUserInfo() {
+    const button = document.getElementById('search-button');
+    button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>  Searching...';
     let query = document.getElementById('user_id').value;
     if (query) {
         const result = document.getElementById('result');
@@ -27,5 +29,6 @@ async function getUserInfo() {
                         `
         }
     }
+    button.innerHTML = 'Search';
 
 }

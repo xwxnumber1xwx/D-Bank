@@ -1,0 +1,11 @@
+section {
+    margin: 20px auto;
+}
+
+#result {
+    list-style: none;
+}
+
+#search-button {
+    display: block;
+}
