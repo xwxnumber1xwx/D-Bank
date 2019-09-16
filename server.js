@@ -20,24 +20,38 @@ app.get("/", function (req, res) {
 
 app.post("/api/user_info", function (req, res) {
     const query = { cust_catag: req.body.query };
+    console.log('connecting, req, res', req, res);
     /* Connect to Mongo DB */
     const client = new MongoClient(URL, { useNewUrlParser: true });
     client.connect(err => {
-        if (err) throw err;
-        const collection = client.db(DB).collection(COLLECTION);
-        // perform actions on the collection object
-        collection.find(query).toArray(function (err, result) {
-            if (err) throw err;
-            client.close();
-            res.send(JSON.stringify(result));
-        });
-        //res.send(JSON.stringify(collection));
+        console.log('connect, err', err);
+        if (!err) {
+            const collection = client.db(DB).collection(COLLECTION);
+            console.log('collection', collection);
+            // perform actions on the collection object
+            collection.find(query).toArray(function (err, result) {
+                if (!err) {
+                    client.close();
+                    res.status(200).send(result);
+                } else {
+                    //res.statusMessage = 'Failed to connect to MongoDB';
+                    //res.status(500).end();
+                    res.status(500).send({error: 'Failed to connect to MongoDB'});
+                }
+
+            });
+            //res.send(JSON.stringify(collection));
+        } else {
+            //res.statusMessage = 'Failed to connect to MongoDB';
+            //res.status(500).end();
+            res.status(500).send({error: 'Failed to connect to MongoDB'});
+        }
+
     });
 });
 
 /* serves all the static files */
 app.get(/^(.+)$/, function (req, res) {
-    console.log('static file request : ' + req.params);
     res.sendfile(__dirname + req.params[0]);
 });
 

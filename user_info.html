@@ -27,10 +27,10 @@
 
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active" href="./index.html">Home</a>
+                <a class="nav-link active text-white" href="./index.html">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">User Info</a>
+                <a class="nav-link disabled text-white-50" href="#" tabindex="-1" aria-disabled="true">User Info</a>
             </li>
         </ul>
         <section>
@@ -40,10 +40,10 @@
                 <div class="col-sm">
                     <form action="#" onsubmit="getUserInfo();return false" autocomplete="off">
                         <div class="form-group">
-                            <label for="user_id">Email address</label>
+                            <label for="user_id" class="text-white">USER ID</label>
                             <input type="text" class="form-control" id="user_id" aria-describedby="userId"
                                 name="account_id" placeholder="Enter User ID">
-                            <small id="userId" class="form-text text-muted">Please insert a User ID</small>
+                            <small id="userId" class="form-text text-white-50">Please insert a User ID</small>
                         </div>
                         <button type="submit" class="btn btn-primary mx-auto" style="width: 200px;"
                             id="search-button">Search</button>
@@ -53,13 +53,11 @@
             </div>
         </section>
         <section>
-            <div class="row">
-                    <div class="col-sm"></div>
-                <div class="col-sm">
+            <div id="result-container" class="row card animated hidden">
+                <div class="col-sm text-center">
                     <ul id="result"></ul>
                     <ul id="limit"></ul>
                 </div>
-                <div class="col-sm"></div>
             </div>
         </section>
 
