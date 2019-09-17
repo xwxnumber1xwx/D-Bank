@@ -19,6 +19,8 @@ async function getUserInfo() {
             .then(res => res.json())
             .then(content => {
                 resultContainer.classList.remove('hidden');
+                resultContainer.classList.add('animated');
+                
                 console.log('content', content);
                 if (content[0]) {
                     messageResult = `
@@ -54,6 +56,7 @@ async function getUserInfo() {
 
     } else {
         resultContainer.classList.add('hidden');
+        resultContainer.classList.remove('animated');
     }
     result.innerHTML = messageResult;
     forecast.innerHTML = messageForecast;

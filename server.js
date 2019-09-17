@@ -34,17 +34,13 @@ app.post("/api/user_info", function (req, res) {
                     client.close();
                     res.status(200).send(result);
                 } else {
-                    //res.statusMessage = 'Failed to connect to MongoDB';
-                    //res.status(500).end();
-                    res.status(500).send({error: 'Failed to connect to MongoDB'});
+                    res.status(500).send({error: 'Connection to MongoDB failed'});
                 }
 
             });
             //res.send(JSON.stringify(collection));
         } else {
-            //res.statusMessage = 'Failed to connect to MongoDB';
-            //res.status(500).end();
-            res.status(500).send({error: 'Failed to connect to MongoDB'});
+            res.status(500).send({error: 'Connection to MongoDB failed'});
         }
 
     });
