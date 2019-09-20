@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js">
+<html class="no-js" lang="en">
 <!--<![endif]-->
 
 <head>
@@ -21,22 +21,24 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <div class="container">
-        <h1 class="text-center">D-Bank</h1>
+        <header>
+            <h1 class="text-center">D-Bank</h1>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled text-white-50" href="#" tabindex="-1" aria-disabled="true">User</a>
+                </li>
+            </ul>
+        </header>
 
-        <ul class="nav justify-content-center">
-            <li class="nav-item">
-                <a class="nav-link active text-white" href="./index.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled text-white-50" href="#" tabindex="-1" aria-disabled="true">User</a>
-            </li>
-        </ul>
         <section>
 
-            <div class="row">
+            <div class="row" role="main">
                 <div class="col-sm"></div>
                 <div class="col-sm">
-                    <form action="#" onsubmit="getUserInfo();return false" autocomplete="off">
+                    <form action="#" onsubmit="getCategoryFromMainframe();return false" autocomplete="off">
                         <div class="form-group">
                             <label for="user_id" class="text-white">USER ID</label>
                             <input type="text" class="form-control text-center" id="user_id" aria-describedby="userId"
@@ -53,7 +55,9 @@
         <section>
             <div id="result-container" class="row card no-border">
                 <div class="col-sm text-center">
-                    <article id="result"></article>
+                    <article id="result" tabindex="0"></article>
+                    <article id="find-button-container" class="hidden"><button onClick="findHouses(_CREDIT)"
+                            class="btn btn-primary mx-auto">Find house</button></article>
                     <article id="limit" class="card-deck"></article>
                 </div>
             </div>
@@ -63,8 +67,9 @@
 
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="app.js" async defer></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <script>document.getElementById('user_id').focus()</script>
 </body>
 
 </html>

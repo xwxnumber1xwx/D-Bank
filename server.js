@@ -26,6 +26,18 @@ app.get("/api/real_estate", function(req, res) {
 
 })
 
+app.get('/api/mainframe/:id', function(req, res) {
+    const result = {
+        CUSTREADOperationResponse: {
+            ws_cust_rec: {
+                cust_code: "21018",
+                cust_catg: "C"
+            }
+        }
+    }
+    res.status(200).send(JSON.stringify(result));
+})
+
 /* API get user info */
 app.post("/api/user_info", function (req, res) {
     const DB = 'catalog';
